@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
+using Bookish.DataAccess;
 
 namespace Bookish.ConsoleApp
 {
@@ -14,10 +15,7 @@ namespace Bookish.ConsoleApp
     {
         static void Main(string[] args)
         {
-            IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-            string SqlString = "SELECT TOP 100 [Id],[AuthorName],[Title],[ISBN] FROM [Books]";
-
-            var ourBooks = (List<Book>) db.Query<Book>(SqlString);
+            var ourBooks = DataAccessor.GetBooks();
 
             foreach (var book in ourBooks)
             {
@@ -30,7 +28,6 @@ namespace Bookish.ConsoleApp
             }
 
             Console.ReadLine();
-
         }
     }
 }

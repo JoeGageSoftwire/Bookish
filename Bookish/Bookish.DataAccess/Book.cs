@@ -1,6 +1,6 @@
-namespace Bookish.ConsoleApp
+namespace Bookish.DataAccess
 {
-    class Book
+    public class Book
     {
         public int Id { get; set; }
         public string AuthorName { get; set; }
